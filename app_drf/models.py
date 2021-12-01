@@ -1,13 +1,19 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+
 # Create your models here.
+from django.contrib.auth import get_user_model
+
+class Car(models.Model):
+
+    name_car = models.CharField(max_length=100)
 
 
+    purchaser  =  models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
 
 
-class user(AbstractUser):
-    pass
-    # add additional fields in here
+    description  = models.TextField()
+
 
     def __str__(self):
-        return self.username
+
+        return self.name_car
